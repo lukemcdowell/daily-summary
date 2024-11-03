@@ -27,3 +27,13 @@ To upload the function to AWS Lambda, package your Python code and dependencies:
    ```bash
    pip install -r requirements.txt -t .
    ```
+
+### 3. Zip Entire Directory
+
+Once all necessary files and dependencies are in the root directory, you can zip everything:
+
+```bash
+zip -r lambda_function.zip ./*
+```
+
+### 4. Upload Deployment Package to Lambda
