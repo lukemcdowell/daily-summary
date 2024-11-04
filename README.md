@@ -2,7 +2,9 @@
 
 Script to email me a summary of my day ahead. Runs daily on AWS Lambda.
 
-Integrates with [Google Calendar](https://calendar.google.com/calendar) to fetch events and reminders, and [OpenWeather](https://docs.openweather.co.uk/) to get the current weather forecast for my morning commute, and an AI summary.
+Integrates with [Google Calendar](https://calendar.google.com/calendar) to fetch events and reminders, and [OpenWeather](https://docs.openweather.co.uk/) to get the current weather forecast for my morning commute.
+
+![image](https://github.com/user-attachments/assets/811b32f4-2e55-489b-bfcc-c2b00ed807d3)
 
 ## Useful Links
 
