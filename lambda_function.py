@@ -2,10 +2,13 @@ import json
 import os
 from mail import send_email
 from daily_summary import format_email_body
+import datetime as dt
 
 
 def lambda_handler(event, context):
-    subject = "Daily Summary"
+    today = dt.datetime.today().strftime("%d/%m/%Y")
+
+    subject = f"Daily Summary - {today}"
     body = format_email_body()
 
     try:

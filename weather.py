@@ -74,13 +74,13 @@ def get_todays_weather():
     weather_summary = get_weather_summary(today, lat, lon)
 
     todays_weather = {
-        "temp": f"{current_forecast['temp']}C",
-        "feels_like": f"{current_forecast['feels_like']}C",
-        "humidity": f"{current_forecast['humidity']}%",
-        "sunrise": f"{current_forecast['sunrise']}am",
-        "sunset": f"{current_forecast['sunset']}pm",
-        "wind_speed": f"{current_forecast['wind_speed']}mph",
-        "description": current_forecast["weather"][0]["description"],
+        "description": current_forecast["weather"][0]["description"].capitalize(),
+        "temp": f"Currently {current_forecast['temp']}C",
+        "feels_like": f"Feels like {current_forecast['feels_like']}C",
+        "sunrise": f"Sunrise at {current_forecast['sunrise']}AM",
+        "sunset": f"Sunset at {current_forecast['sunset']}PM",
+        "humidity": f"{current_forecast['humidity']}% humidity",
+        "wind_speed": f"{current_forecast['wind_speed']}mph wind speed",
         "summary": weather_summary,
     }
 
