@@ -8,6 +8,7 @@ CITY = "Glasgow"
 API_KEY = os.environ.get("WEATHER_API_KEY")
 
 
+# get coordinates of city
 def get_coordinates():
     geocoding_url = (
         f"http://api.openweathermap.org/geo/1.0/direct?q={CITY}&appid={API_KEY}"
@@ -52,7 +53,7 @@ def get_current_forecast(lat, lon):
         sys.exit(f"An error occurred getting forecast: {error}")
 
 
-def get_weather_summary(today, lat, lon):
+def get_ai_weather_summary(today, lat, lon):
     weather_summary_url = f"https://api.openweathermap.org/data/3.0/onecall/overview?lat={lat}&lon={lon}&date={today}&appid={API_KEY}&units=metric"
 
     try:
@@ -66,12 +67,13 @@ def get_weather_summary(today, lat, lon):
         sys.exit(f"An error occurred getting weather summary: {error}")
 
 
+# returns current forecast and weather summary
 def get_todays_weather():
     today = dt.datetime.today().strftime("%Y-%m-%d")
     lat, lon = get_coordinates()
 
     current_forecast = get_current_forecast(lat, lon)
-    weather_summary = get_weather_summary(today, lat, lon)
+    weather_summary = get_ai_weather_summary(today, lat, lon)
 
     todays_weather = {
         "description": current_forecast["weather"][0]["description"].capitalize(),

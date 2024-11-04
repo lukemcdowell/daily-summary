@@ -3,7 +3,7 @@ from datetime import datetime
 from weather import get_todays_weather
 
 
-def format_duration(duration_str):
+def format_event_duration(duration_str):
     hours, minutes, _ = map(int, duration_str.split(":"))
 
     if hours > 0 and minutes > 0:
@@ -38,6 +38,7 @@ def format_email_body():
         start_time = event["start_time"]
         end_time = event["end_time"]
 
+        # split events into all day and timed events
         if "T" not in start_time:
             all_day_events.append(event)
         else:
@@ -60,7 +61,7 @@ def format_email_body():
                 event["start_time"].replace("Z", "+00:00")
             )
             end_time = datetime.fromisoformat(event["end_time"].replace("Z", "+00:00"))
-            duration = format_duration(str(end_time - start_time))
+            duration = format_event_duration(str(end_time - start_time))
             formatted_start = start_time.strftime("%I:%M%p")
             events_html += (
                 f"<li>{event['event_name']} - {formatted_start} ({duration})</li>"

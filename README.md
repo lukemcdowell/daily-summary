@@ -2,6 +2,16 @@
 
 Script to email me a summary of my day ahead. Runs daily on AWS Lambda.
 
+Integrates with [Google Calendar](https://calendar.google.com/calendar) to fetch events and reminders, and [OpenWeather](https://docs.openweather.co.uk/) to get the current weather forecast for my morning commute, and an AI summary.
+
+## Useful Links
+
+- https://developers.google.com/identity/protocols/oauth2/service-account
+- https://developers.google.com/calendar/api/quickstart/python
+- https://docs.openweather.co.uk/api/one-call-3
+- https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html
+- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-run-lambda-schedule.html
+
 ## Running on Lambda
 
 To run on AWS Lambda, follow these steps:
@@ -39,12 +49,3 @@ zip -r lambda_function.zip ./*
 ```
 
 ### 4. Upload Deployment Package to Lambda
-
-## Useful Links
-
-- https://developers.google.com/identity/protocols/oauth2/service-account
-- https://docs.openweather.co.uk/api/one-call-3
-- https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html
-- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-run-lambda-schedule.html
-
-

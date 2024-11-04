@@ -1,6 +1,5 @@
 import datetime as dt
 import os.path
-
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -8,10 +7,10 @@ from pprint import pprint
 
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
 SERVICE_ACCOUNT_FILE = "service.json"
-CALENDAR_ID = os.environ.get("EMAIL_ADDRESS")
 EVENTS_CALENDAR_ID = os.environ.get("EVENTS_CALENDAR_ID")
 REMINDERS_CALENDAR_ID = os.environ.get("REMINDERS_CALENDAR_ID")
 
+# authenticating using google service account creds
 creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 
 now = dt.datetime.now(dt.timezone.utc)
@@ -26,7 +25,7 @@ def get_todays_events():
         events_result = (
             service.events()
             .list(
-                calendarId=CALENDAR_ID,
+                calendarId=EVENTS_CALENDAR_ID,
                 timeMin=start_of_day,
                 timeMax=end_of_day,
                 singleEvents=True,
@@ -44,6 +43,7 @@ def get_todays_events():
 
         event_list = []
         for event in events:
+            # get event details and times, with defaults if none found
             event_details = {
                 "event_name": event.get("summary", "No Title"),
                 "start_time": event["start"].get("dateTime")
