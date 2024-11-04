@@ -1,6 +1,6 @@
 # daily-summary
 
-AWS Lambda function to give me a summary of my day ahead.
+Script to email me a summary of my day ahead. Runs daily on AWS Lambda.
 
 ## Running on Lambda
 
@@ -10,10 +10,12 @@ To run on AWS Lambda, follow these steps:
 
 The Lambda function requires specific environment variables to run, including:
 
-- `ALERT_EMAIL_ADDRESS`: The email address from which alerts will be sent.
-- `ALERT_EMAIL_PASSWORD`: The password or app-specific password for the sender's email account.
-- `EMAIL_ADDRESS`: The recipient email address. This is also used as the ID of the events calendar.
-- `REMINDERS_CALENDAR_ID`: The ID for the reminders calendar.
+- `ALERT_EMAIL_ADDRESS`: Email address from which alerts will be sent.
+- `ALERT_EMAIL_PASSWORD`: Password for alert email account.
+- `EMAIL_ADDRESS`: Recipient email address.
+- `EVENTS_CALENDAR_ID`: ID for the events calendar.
+- `REMINDERS_CALENDAR_ID`: ID for the reminders calendar.
+- `WEATHER_API_KEY`: OpenWeather API key.
 
 Set these in the AWS Lambda environment configuration under **Configuration > Environment variables**.
 
@@ -37,3 +39,12 @@ zip -r lambda_function.zip ./*
 ```
 
 ### 4. Upload Deployment Package to Lambda
+
+## Useful Links
+
+- https://developers.google.com/identity/protocols/oauth2/service-account
+- https://docs.openweather.co.uk/api/one-call-3
+- https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-zip.html
+- https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-run-lambda-schedule.html
+
+

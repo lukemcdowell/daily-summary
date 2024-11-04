@@ -16,3 +16,7 @@ def lambda_handler(event, context):
             "statusCode": 500,
             "body": json.dumps(f"Failed to send email: {str(e)}"),
         }
+
+
+if __name__ == "__main__":
+    print(lambda_handler("test", "test"))

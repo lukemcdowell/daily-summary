@@ -9,6 +9,7 @@ from pprint import pprint
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
 SERVICE_ACCOUNT_FILE = "service.json"
 CALENDAR_ID = os.environ.get("EMAIL_ADDRESS")
+EVENTS_CALENDAR_ID = os.environ.get("EVENTS_CALENDAR_ID")
 REMINDERS_CALENDAR_ID = os.environ.get("REMINDERS_CALENDAR_ID")
 
 creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
