@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt
 import os.path
 
 from google.oauth2.service_account import Credentials
@@ -13,13 +13,9 @@ REMINDERS_CALENDAR_ID = os.environ.get("REMINDERS_CALENDAR_ID")
 
 creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 
-now = datetime.datetime.utcnow()
-start_of_day = (
-    datetime.datetime(now.year, now.month, now.day, 0, 0, 0).isoformat() + "Z"
-)
-end_of_day = (
-    datetime.datetime(now.year, now.month, now.day, 23, 59, 59).isoformat() + "Z"
-)
+now = dt.datetime.now(dt.timezone.utc)
+start_of_day = dt.datetime(now.year, now.month, now.day, 0, 0, 0).isoformat() + "Z"
+end_of_day = dt.datetime(now.year, now.month, now.day, 23, 59, 59).isoformat() + "Z"
 
 
 def get_todays_events():
